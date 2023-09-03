@@ -5,7 +5,4 @@ class Solution(object):
         :rtype: int
         """
         
-        for num in set(nums):
-            counter = nums.count(num)
-            if counter > (len(nums) / 2):
-                return num
+        return sorted(nums)[len(nums) // 2]
