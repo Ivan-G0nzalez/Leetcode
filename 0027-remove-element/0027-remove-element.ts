@@ -1,11 +1,11 @@
 function removeElement(nums: number[], val: number): number {
-    let lenArray = 0 ;
-    nums.forEach((num, index, array)=>{
-        if (num !== val) {
-            array[lenArray] = num;
-            lenArray++
-        }
-    })
     
-    return lenArray;
+    for (let i = nums.length - 1; i >= 0; i--){
+        if (nums[i] === val){
+            nums.splice(i, 1)
+        }
+    }
+    
+    console.log(nums)
+    return nums.length;
 };
