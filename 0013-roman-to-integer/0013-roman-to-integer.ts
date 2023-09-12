@@ -9,30 +9,16 @@ function romanToInt(s: string): number {
         'M':1000
     }
     
-    let counter = 0;
+    let result = 0;
     
-    for (const number of s){
-        counter += romanNumber[number]
+    for (let i = 0; i < s.length; i++){
+        if (romanNumber[s[i]] < romanNumber[s[i+1]]){
+            result -=  romanNumber[s[i]]
+        }
+        else{
+            result += romanNumber[s[i]]
+        }
     }
     
-    
-    let restNumber = {
-        IV: -2,
-        IX: -2,
-        XL: -20,
-        XC: -20,
-        CD: -200,
-        CM: -200,
-    };
-
-    for (let i = 0; i < s.length; i++) {
-        let pair = s[i] + s[i + 1];
-        if (restNumber[pair]) {
-            counter += restNumber[pair];
-            i++;
-        }
-      }
-    
-    return counter
-    
+    return result
 };
