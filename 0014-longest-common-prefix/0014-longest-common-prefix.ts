@@ -1,17 +1,20 @@
 function longestCommonPrefix(strs: string[]): string {
     
-    strs.sort((strs1, strs2) => strs1.length - strs2.length);
-      let firstWord = strs[0];
-      let longerPrefix = '';
+  if (strs.length === 0) return '';
 
-      for (let i = 0; i < firstWord.length; i++) {
-        for (let j = 1; j < strs.length; j++) {
-          if (firstWord[i] !== strs[j][i]) {
-            return longerPrefix;
-          }
-        }
-        longerPrefix += firstWord[i];
-      }
+  let ans = '';
+  strs.sort();
 
-      return longerPrefix;
+  let first = strs[0];
+  let last = strs[strs.length - 1];
+
+  for (let i = 0; i < Math.min(first.length, last.length); i++) {
+    if (first[i] !== last[i]) {
+      return ans;
+    }
+    ans += first[i];
+  }
+
+  return ans;
+    
 };
