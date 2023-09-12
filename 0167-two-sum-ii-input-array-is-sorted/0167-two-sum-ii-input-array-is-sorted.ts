@@ -1,14 +1,17 @@
 function twoSum(numbers: number[], target: number): number[] {
-  let possibleResult = new Map();
+    let left = 0;
+    let right = numbers.length - 1;
 
-  for (let i = 0; i < numbers.length; i++) {
-    const restNumber = target - numbers[i];
-    if (possibleResult.has(restNumber)) {
-      return [possibleResult.get(restNumber) +1, i+1];
-    } else {
-      possibleResult.set(numbers[i], i);
+    while (left < right) {
+        const sum = numbers[left] + numbers[right];
+        if (sum === target) {
+            return [left + 1, right + 1];
+        } else if (sum < target) {
+            left++;
+        } else {
+            right--;
+        }
     }
-  }
 
-  return [];
-};
+    return [];
+}
