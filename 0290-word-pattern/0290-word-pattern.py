@@ -9,10 +9,7 @@ class Solution:
         char_map = {}
 
 
-        for i in range(len(words)):
-            word = words[i]
-            char = pattern[i] 
-
+        for word,char in zip(words, pattern):
             if word not in word_map and char not in char_map:
                 word_map[word] = char
                 char_map[char] = word
