@@ -1,3 +1,15 @@
-class Solution:
-    def strStr(self, haystack: str, needle: str) -> int:
-        return haystack.find(needle)
+class Solution(object):
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        text_len = len(haystack)
+        substring_len = len(needle)
+
+        for i in range(text_len):
+            if haystack[i: i + substring_len] == needle:
+                return i
+
+        return -1
