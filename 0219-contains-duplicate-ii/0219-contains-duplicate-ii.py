@@ -3,11 +3,11 @@ class Solution:
         hashmap = {}
         
         for i in range(len(nums)):
-            if nums[i] not in hashmap:
-                hashmap[nums[i]] = i
-            elif i - hashmap[nums[i]] <= k:
+            current = nums[i]
+            if current in hashmap and i - hashmap[current] <= k:
                 return True
             else:
-                hashmap[nums[i]] = i
+                hashmap[current] = i
+                
         
         return False
