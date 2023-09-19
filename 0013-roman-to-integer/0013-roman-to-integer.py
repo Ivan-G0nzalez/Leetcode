@@ -15,17 +15,12 @@ class Solution(object):
             "M":1000
         }
         
-        start = 0
-        end = len(s)
-        
         result = 0
         
-        while start < end:
-            if start < len(s) - 1 and romanNumber[s[start]] < romanNumber[s[start + 1]]:
-                result -= romanNumber[s[start]]
-            else: 
-                result += romanNumber[s[start]]
+        for i in range(len(s)):
+            if i < len(s) - 1 and romanNumber[s[i]] < romanNumber[s[i + 1]]:
+                result -= romanNumber[s[i]]
+            else:
+                result += romanNumber[s[i]]
             
-            start += 1
-        
         return result
