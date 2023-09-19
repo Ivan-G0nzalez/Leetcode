@@ -10,23 +10,19 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
+        if root is None:
+            return []
+        
         result = []
-        stack = []
         
-        current = root
+        result.append(root.val)
         
-        while current or stack:
-            if current:
-                result.append(current.val)
-            
-                if current.right:
-                    stack.append(current.right)
-                current = current.left
-                
-            else:
-                current = stack.pop()
+        left_result = self.preorderTraversal(root.left)
         
-       
+        result.extend(left_result)
+        
+        right_result = self.preorderTraversal(root.right)
+        
+        result.extend(right_result)
+        
         return result
-            
-        
