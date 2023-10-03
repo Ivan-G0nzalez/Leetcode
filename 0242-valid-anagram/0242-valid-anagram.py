@@ -10,22 +10,15 @@ class Solution(object):
         if len(s) != len(t):
             return False
         
-        letter_s = self.getLetter(s)
-        letter_t = self.getLetter(t)
+        count_s, count_t = {}, {}
         
-        for letter in letter_s:
-            if letter not in letter_t or letter_s[letter] != letter_t[letter]:
+        
+        for index in range(len(s)):
+            count_s[s[index]] = 1 + count_s.get(s[index], 0)
+            count_t[t[index]] = 1 + count_t.get(t[index], 0)
+        
+        for counter in count_s:
+            if count_s[counter] != count_t.get(counter, 0):
                 return False
         
         return True
-        
-    
-    def getLetter(self, word):
-        letters = {}
-        for letter in word:
-            if letter not in letters:
-                letters[letter] = 1
-            else:
-                letters[letter] += 1
-        return letters
-            
