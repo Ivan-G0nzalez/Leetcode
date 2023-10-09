@@ -12,16 +12,18 @@
 
 function hasCycle(head: ListNode | null): boolean {
 
-    let slow = head;
-    let fast = head;
+    const newSet = new Map();
     
-    while(fast && fast.next){
-        slow = slow.next
-        fast = fast.next.next
-        
-        if (slow === fast){
+    while (head){
+        if (newSet.has(head)){
             return true
-        }
+        } 
+        newSet.set(head, true)
+        
+        head = head.next
+        
     }
+    
     return false
+    
 };
