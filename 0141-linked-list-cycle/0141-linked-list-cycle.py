@@ -11,14 +11,15 @@ class Solution(object):
         :rtype: bool
         """
         
-        dic = {}
+        slow, fast = head, head
         
-        while head:
-            if head in dic:
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            
+            if slow == fast:
                 return True
-            dic[head] = True
-            head = head.next
-        
-        return False
+            
+        return False    
         
         
