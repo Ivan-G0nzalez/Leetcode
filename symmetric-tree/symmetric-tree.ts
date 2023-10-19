@@ -28,6 +28,6 @@ function isSymmetric(root: TreeNode | null): boolean {
             dfs(left.right, right.left))
     }
     
-    return dfs(root, root)
+    return dfs(root.left, root.right)
 
 };
