@@ -13,22 +13,18 @@
  */
 
 function isUnivalTree(root: TreeNode | null): boolean {
-    function dfs(root){
-        if (!root){
+     if (!root){
         return true
         }
 
-        if (!!root.right && root.val !== root.right.val){
-            return false
-        }
-
-        if (!!root.left && root.val !== root.left.val){
-             return false
-         }
-
-        return dfs(root.right) && dfs(root.left)
+    if (!!root.right && root.val !== root.right.val){
+        return false
     }
+
+    if (!!root.left && root.val !== root.left.val){
+         return false
+     }
+
+    return isUnivalTree(root.right) && isUnivalTree(root.left)
     
-    
-    return dfs(root)
 };
