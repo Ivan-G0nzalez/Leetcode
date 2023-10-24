@@ -18,11 +18,11 @@ function isUnivalTree(root: TreeNode | null): boolean {
         return true
         }
 
-        if (root.right !== null && root.val !== root.right.val){
+        if (!!root.right && root.val !== root.right.val){
             return false
         }
 
-        if (root.left !== null && root.val !== root.left.val){
+        if (!!root.left && root.val !== root.left.val){
              return false
          }
 
