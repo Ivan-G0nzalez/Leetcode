@@ -17,9 +17,8 @@ function maxProfit(prices: number[]): number {
             bestTimeToSell = day
             let currentProfix = bestTimeToSell - bestTimeToBuy;
             
-            if (currentProfix > profix){
-                profix = currentProfix
-            }
+            profix = Math.max(currentProfix, profix)
+            
         }
     }
     
