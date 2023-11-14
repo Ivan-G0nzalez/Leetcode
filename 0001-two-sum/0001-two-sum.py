@@ -1,17 +1,9 @@
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
         result = {}
-        for i,num in enumerate(nums):
-            objetive = target - num
-            print(objetive)
-            if objetive in result:
-                return [ result[objetive], i]
+        
+        for i in range(len(nums)):
+            if target - nums[i] in result.keys():
+                return [result[target - nums[i]], i]
             else:
-                result[num] = i     
-
-        return []        
+                result[nums[i]] = i
