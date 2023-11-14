@@ -1,19 +1,27 @@
 function maxProfit(prices: number[]): number {
-    let betterDayBuy = prices[0];
-    let betterDaySell = prices[0];
+    if (prices.length === 0){
+        return 0
+    }
     
-    let maxProfit = 0;
+    let bestTimeToBuy = prices[0];
+    let bestTimeToSell = prices[0];
+    let profix = 0
     
-    for(let i = 0; i < prices.length; i++){
-        if (prices[i] < betterDayBuy){
-            betterDayBuy = prices[i];
-            betterDaySell = prices[i]
-        } else if (prices[i] > betterDaySell){
-            betterDaySell = prices[i];
-            const currentProfit = betterDaySell - betterDayBuy;
-            maxProfit = Math.max(maxProfit, currentProfit)
+    for (const day of prices){
+        if (day < bestTimeToBuy){
+            bestTimeToBuy = day
+            bestTimeToSell = day
+        }
+        
+        else if (day > bestTimeToSell){
+            bestTimeToSell = day
+            let currentProfix = bestTimeToSell - bestTimeToBuy;
+            
+            if (currentProfix > profix){
+                profix = currentProfix
+            }
         }
     }
     
-    return maxProfit
+    return profix;
 };
