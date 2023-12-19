@@ -4,29 +4,26 @@ import java.util.Map.Entry;
 
 public class Solution {
     public int majorityElement(int[] nums) {
-        int size = nums.length / 2; 
-
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for (int i = 0; i < nums.length; i++) { 
-            if (map.containsKey(nums[i])) {
-                map.put(nums[i], map.get(nums[i]) + 1);
-            } else {
-                map.put(nums[i], 1);
+        int num = nums[0];
+        int counter = 1;
+        
+        for (int i = 1; i < nums.length; i++){
+            if (num != nums[i]){
+                counter--;
             }
-        }
-
-        int expectedFrequency = Integer.MIN_VALUE;
-
-        for (Entry<Integer, Integer> entry : map.entrySet()) {
-            int element = entry.getKey();
-            int actualFrequency = entry.getValue();
-
-            if (actualFrequency > size) { 
-                return element;
+            
+            else {
+                counter++;   
             }
+            
+            if (counter == 0){
+                num = nums[i];
+                counter = 1;
+            }
+            
+            
         }
-
-        return -1;
+        
+        return num;
     }
 }
