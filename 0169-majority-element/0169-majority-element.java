@@ -16,7 +16,7 @@ public class Solution {
             }
 
      
-            count += (num == candidate) ? 1 : -1;
+            count += (candidate == num) ? 1 : -1;
         }
 
         return candidate;
