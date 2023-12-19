@@ -13,9 +13,7 @@ class Solution {
             else if (prices[i] >  bestDayToBuy){
                 bestDayToSell = prices[i];
                 int tempProfix = bestDayToSell - bestDayToBuy;
-                if (tempProfix > maxProfix){
-                    maxProfix = tempProfix;
-                }
+                maxProfix = Math.max(maxProfix, tempProfix);
             }
         }
         
