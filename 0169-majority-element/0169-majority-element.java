@@ -4,26 +4,21 @@ import java.util.Map.Entry;
 
 public class Solution {
     public int majorityElement(int[] nums) {
-        int num = nums[0];
-        int counter = 1;
         
-        for (int i = 1; i < nums.length; i++){
-            if (num != nums[i]){
-                counter--;
+        int candidate = 0;
+        int count = 0;
+
+        // Iterate through the array
+        for (int num : nums) {
+            // If count is 0, set the candidate to num
+            if (count == 0) {
+                candidate = num;
             }
-            
-            else {
-                counter++;   
-            }
-            
-            if (counter == 0){
-                num = nums[i];
-                counter = 1;
-            }
-            
-            
+
+     
+            count += (num == candidate) ? 1 : -1;
         }
-        
-        return num;
+
+        return candidate;
     }
 }
