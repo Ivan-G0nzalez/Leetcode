@@ -13,7 +13,13 @@ class Solution {
         int tens = (int) Math.floor((num % 100) / 10);
         int ones = (int) Math.floor(num % 10);
         
-        String result = romans[3][thousands] + romans[2][hundres] + romans[1][tens] + romans[0][ones];
+        StringBuilder resultBuilder = new StringBuilder();
+        resultBuilder.append(romans[3][thousands]);
+        resultBuilder.append(romans[2][hundres]);
+        resultBuilder.append(romans[1][tens]);
+        resultBuilder.append(romans[0][ones]);
+        
+        String result = resultBuilder.toString();
         
         return result;
     }
