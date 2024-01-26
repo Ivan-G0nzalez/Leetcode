@@ -1,22 +1,21 @@
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        
-        if len(s) == 1:
-            return 1
-        
-        currentValue = ""
-        comparationValue = ""
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        longestComparation = ""
+        longestResult = ""
         
         for letter in s:
+            if len(longestResult) < len(longestComparation):
+                    longestResult = longestComparation
             
-            if len(currentValue) > len(comparationValue):
-                comparationValue = currentValue
-        
-            if letter not in currentValue:
-                currentValue += letter
+            if letter not in longestComparation:
+                longestComparation += letter
+                
             else:
-                currentValue = currentValue[currentValue.index(letter)+ 1:] + letter
-            
-            
-       
-        return max(len(currentValue), len(comparationValue))
+                longestComparation = longestComparation[longestComparation.index(letter) + 1:] + letter
+                
+                    
+        return max(len(longestComparation), len(longestResult))                
